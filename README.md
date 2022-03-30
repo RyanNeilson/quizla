@@ -1,2 +1,2 @@
-# quizla
+# Quizla
 A daily trivia game
