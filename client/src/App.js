@@ -100,7 +100,7 @@ function App() {
         // Convert data index to string for use in URL
         const id = timestampIndex.toString();
 
-        const url = `http://localhost:5000/trivia/${id}`;
+        const url = `/trivia/${id}`;
         const response = await fetch(url);
         if (!response.ok) {
           const message = `An error has occurred: ${response.statusText}`;
