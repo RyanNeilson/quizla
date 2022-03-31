@@ -1,0 +1,505 @@
+body {
+  background: #fcfcfc;
+  box-sizing: border-box;
+  position: relative;
+  padding: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+}
+
+.site-header {
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  background: #190d54;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  padding: 0 1rem;
+  font-family: 'Lobster Two', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-style: italic;
+  text-shadow: 0px 0px 6px #0b0724;
+  border-style: solid;
+  border-width: 3px;
+  border-image: linear-gradient(90deg, rgba(14,94,173,1) 0%, rgba(14,94,173,1) 16%, rgba(77,8,166,1) 16%, rgba(77,8,166,1) 33%, rgba(207,19,169,1) 33%, rgba(207,19,169,1) 50%, rgba(209,94,0,1) 50%, rgba(209,94,0,1) 66%, rgba(201,151,0,1) 66%, rgba(201,151,0,1) 83%, rgba(0,117,36,1) 83%, rgba(0,117,36,1) 100%) 30 fill repeat;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+
+.app {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.app-card {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  justify-content: space-between;
+  height: fit-content;
+  padding: 4rem 1rem 2rem;
+  position: relative;
+  min-height: 500px;
+  width: 100%;
+  z-index: 10;
+}
+
+.app-card.start-view,
+.app-card.end-view {
+  justify-content: flex-start;
+  padding: 2rem;
+  text-align: center;
+}
+
+.app-card__title {
+  margin-top: 0;
+  text-align: center;
+}
+
+.welcome-title {
+  font-family: 'Lobster Two', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-style: italic;
+  font-size: 4.5rem;
+  color: #190d54;
+  margin-bottom: 1.5rem;
+}
+
+.app-card__subtitle {
+  margin: 0 auto 2rem;
+  display: block;
+  padding: 0.5rem;
+  border: 3px solid black;
+  text-align: center;
+  font-weight: bold;
+  width: fit-content;
+}
+
+.quiz-question {
+  font-weight: bold;
+  margin: 1.5rem 0 1rem;
+  text-align: center;
+}
+
+.quiz-options {
+  align-items: center;
+  font-weight: bold;
+  justify-items: center;
+}
+
+.quiz-option {
+  border: 2px solid #e7e7e7;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  display: flex;
+  margin-bottom: 1rem;
+  padding: 0.625rem 2rem;
+  justify-content: center;
+}
+
+.quiz-option:hover:not([selectedoption="selected"]):not(.disabled) {
+  border: 2px solid black;
+}
+.quiz-option.correct {
+  border: 2px solid #190d54;
+  background: #190d54;
+  color: white;
+}
+
+.quiz-option.incorrect {
+  background: #e7e7e7;
+  opacity: 0.5;
+}
+
+button {
+  align-self: center;
+  border: none;
+  border-radius: 36px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  justify-self: center;
+  max-width: 275px;
+  min-width: 150px;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+}
+
+.app-card__submit-button,
+.app-card__share-button,
+.app-card__about-close-button,
+.app-card__my-stats-close-button {
+  background: #190d54;
+  color: white;
+}
+
+.app-card__share-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-card__share-button span {
+  margin-top: 2px;
+}
+
+.app-card__about,
+.app-card__my-stats {
+  background: white;
+  display: none;
+  position: absolute;
+  border-radius: 0.625rem;
+  height: 100%;
+  width: calc(100% - 2rem);
+  left: 1rem;
+  z-index: 10;
+}
+
+.app-card__about.show,
+.app-card__my-stats.show {
+  display: block;
+}
+
+.app-card__about-close-button,
+.app-card__my-stats-close-button {
+  margin-top: 1rem;
+}
+
+.app-card__about-button,
+.app-card__my-stats-button {
+  background: #e5e5e5;
+  margin-bottom: 1.5rem;
+}
+
+.app-card__about-button:hover,
+.app-card__my-stats-button:hover {
+  background: #7cfcda;
+}
+
+.app-card__submit-button:hover,
+.app-card__about-close-button:hover,
+.app-card__my-stats-close-button:hover {
+  background-color: #fcd026;
+  color: black;
+}
+
+[selectedoption="selected"]:not(.disabled) {
+  background: #222;
+  border: 2px solid #222;
+  color: white;
+}
+[selectedoption="selected"].disabled.correct {
+  border: 2px solid #08c735;
+}
+[selectedoption="selected"].disabled.incorrect {
+  border: 2px solid #db0202;
+}
+
+.app-card__message-warning-wrapper {
+  align-items: center;
+  color: #c41a1a;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+}
+
+.app-card__message-warning {
+  display: none;
+}
+
+.app-card__message-warning.show {
+  display: block;
+}
+
+[category] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5rem 1rem;
+  width: calc(100% - 2rem);
+  text-align: center;
+  color: white;
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+[category="geography"] {
+  background: #0e5ead;
+}
+
+.app-card__category-title {
+  display: inline-block;
+  position: relative;
+  margin-right: 20px;
+}
+
+[category="geography"] .app-card__category-title:after { 
+  content: "";
+  background-image: url("./assets/earth-americas.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top:0;
+  right: -32px;
+  height: 22px;
+  width: 22px;
+}
+
+[category="pop_culture"] {
+  background: #cf13a9;
+}
+
+[category="pop_culture"] .app-card__category-title:after { 
+  content: "";
+  background-image: url("./assets/film.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top:0;
+  right: -32px;
+  height: 22px;
+  width: 22px;
+}
+
+[category="history"] {
+  background: #c99700;
+}
+
+[category="history"] .app-card__category-title:after { 
+  content: "";
+  background-image: url("./assets/landmark.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top:0;
+  right: -32px;
+  height: 22px;
+  width: 22px;
+}
+
+[category="arts_and_lit"] {
+  background: #4d08a6;
+}
+
+[category="arts_and_lit"] .app-card__category-title:after { 
+  content: "";
+  background-image: url("./assets/palette.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top:0;
+  right: -32px;
+  height: 22px;
+  width: 22px;
+}
+
+[category="science_and_nature"] {
+  background: #007524;
+}
+
+[category="science_and_nature"] .app-card__category-title:after { 
+  content: "";
+  background-image: url("./assets/microscope.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top:0;
+  right: -32px;
+  height: 22px;
+  width: 22px;
+}
+
+[category="sports_and_leisure"] {
+  background: #d15e00;
+}
+
+[category="sports_and_leisure"] .app-card__category-title:after { 
+  content: "";
+  background-image: url("./assets/football.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top:0;
+  right: -32px;
+  height: 22px;
+  width: 22px;
+}
+
+.app-card__score-and-timer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem 1rem;
+  font-weight: bold;
+  background: #222;
+  position: absolute;
+  left: 0;
+  top: 39px;
+  color: #43f1f7;
+  width: calc(100% - 2rem);
+  height: 30px;
+}
+
+.seconds-counter {
+  color: #00ff3c;
+}
+
+.seconds-counter.critical {
+  color: #ff0000;
+}
+
+.app-card__countdown {
+  font-size: 1.25rem;
+}
+
+.stats-chart {
+  position: relative;
+}
+
+.stats-chart h2 {
+  margin-bottom: 0.5rem;
+}
+
+.stats-chart__data-wrapper {
+  display: flex;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.stats-chart__labels {
+  flex: 1;
+  border-left: 1px solid #777;
+  border-top: 1px solid #777;
+}
+
+.stats-chart__labels > * {
+  display: flex;
+  border-bottom: 1px solid #777;
+  border-right: 1px solid #777;
+  height: 35px;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 0.5rem;
+}
+
+.stats-chart__labels > :nth-child(odd),
+.stats-chart__graph-category-wrapper:nth-child(odd) {
+  background: #f0f0f0;
+}
+
+.stats-chart__graph {
+  flex: 1;
+  border-top: 1px solid #777;
+  border-right: 1px solid #777;
+ }
+.stats-chart__graph > * {
+  height: 35px;
+  display: flex;
+  border-bottom: 1px solid #777;
+  padding-right: 0.25rem;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+}
+
+.stats-chart__graph-category-wrapper > * {
+  height: 35px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.stats-chart__graph-category-wrapper span {
+  justify-self: flex-end;
+}
+
+.stats-chart__graph--geography {
+  background: #0e5ead;
+}
+
+.stats-chart__graph--pop-culture {
+  background: #cf13a9;
+}
+
+.stats-chart__graph--history {
+  background:#c99700;
+}
+
+.stats-chart__graph--arts-and-lit {
+  background:#4d08a6;
+}
+
+.stats-chart__graph--science-and-nature {
+  background:#007524;
+}
+
+.stats-chart__graph--sports-and-leisure {
+  background:#d15e00;
+}
+
+.stats-chart .no-results {
+  padding: 0;
+}
+
+@media only screen and (min-width: 475px) {
+  .app-card {
+    padding: 4rem 2rem 2rem;
+  }
+
+  .app-card__about {
+    width: calc(100% - 4rem);
+    left: 2rem;
+  }
+
+  [category] {
+    padding: 1.125rem 1rem;
+  }
+
+  .app-card__score-and-timer {
+    top: 57px;
+  }
+
+  .quiz-option {
+    padding: 1rem 2rem;
+  }
+
+  .quiz-question {
+    margin-top: 4rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .app-card {
+    border-radius: 0.625rem;
+    box-shadow: 0px 3px 10px 1px rgba(0,0,0,0.15);
+    margin-top: 1rem;
+    min-height: unset;
+    height: 550px;
+    width: 700px;
+  }
+
+  .app-card__about.show,
+  .app-card__my-stats.show {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .app-card__title:not(.welcome-title) {
+    font-size: 2.5rem;
+  }
+
+  .app-card.start-view,
+  .app-card.end-view {
+    justify-content: center;
+  }
+
+  [category] {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .quiz-question {
+    font-size: 1.125rem;
+  }
+
+  .quiz-options {
+    margin: 1.5rem 0 0;
+    font-size: 1.25rem;
+  }
+}
