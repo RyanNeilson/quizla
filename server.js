@@ -8,7 +8,7 @@ app.use(express.json());
 
 function requireHttps(req, res, next) {
   if (!req.secure && req.get("x-forwarded-proto")) {
-    return res.redirect("https://" + res.get("host") + req.url);
+    return res.redirect("https://" + req.get("host") + req.url);
   }
   next();
 }
