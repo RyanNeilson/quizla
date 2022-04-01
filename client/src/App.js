@@ -38,26 +38,6 @@ function App() {
     }
   }, [currentQuestionIndex, currentScore]);
 
-  // Update view when gameState changes
-  // React.useEffect(() => {
-  //   const lastPlayed = localStorage.getItem("quizla-last-played");
-  //   const today = new Date().toLocaleDateString('en-US', {timeZone: 'Universal'});
-
-  //   if((!gameState || gameState === "complete") && lastPlayed !== today) {
-  //     localStorage.setItem("quizla-game-state", "start-screen");
-  //     setGameState('start-screen');
-  //     localStorage.setItem("quizla-current-question", 0);
-  //     setView(<StartView handleStart={handleStart}/>)
-  //   } else if(gameState === 'complete'|| (!gameState && lastPlayed === today)) {
-  //       setView(<EndView handleState={handleGameState}/>)
-  //   } else if (gameState === 'in-progress') {
-  //       setView(<GameView handleState={handleGameState} timerInit={timerInit}/>)
-  //   } else {
-  //       localStorage.setItem("quizla-current-question", 0);
-  //       setView(<StartView handleStart={handleStart}/>)
-  //   }
-  // },[gameState]);
-
   // Handle Quiz Data Configuration
   React.useEffect(() => {
     const lastPlayed = localStorage.getItem("quizla-last-played");
@@ -242,30 +222,6 @@ function App() {
     localStorage.setItem("quizla-timer", 15);
     localStorage.setItem("quizla-game-state", "in-progress");
   }
-
-  // If gameState changes and the new state is 'complete', update the localStorage values- moved to other useEffect function
-  // React.useEffect(() => {
-  //   if(gameState === "complete") {
-  //     const historicalData = JSON.parse(localStorage.getItem("quizla-historical-stats"));
-  //     let updatedHistoricalData = {};
-  //     updatedHistoricalData.geography = parseInt(historicalData.geography) + parseInt(localStorage.getItem("quizla-question-geography"));
-  //     updatedHistoricalData.pop_culture = parseInt(historicalData.pop_culture) + parseInt(localStorage.getItem("quizla-question-pop_culture"));
-  //     updatedHistoricalData.history = parseInt(historicalData.history) + parseInt(localStorage.getItem("quizla-question-history"));
-  //     updatedHistoricalData.arts_and_lit = parseInt(historicalData.arts_and_lit) + parseInt(localStorage.getItem("quizla-question-arts_and_lit"));
-  //     updatedHistoricalData.science_and_nature = parseInt(historicalData.science_and_nature) + parseInt(localStorage.getItem("quizla-question-science_and_nature"));
-  //     updatedHistoricalData.sports_and_leisure = parseInt(historicalData.sports_and_leisure) + parseInt(localStorage.getItem("quizla-question-sports_and_leisure"));
-
-  //     localStorage.setItem("quizla-historical-stats", JSON.stringify(updatedHistoricalData));
-  //     localStorage.setItem("quizla-question-geography", 0);
-  //     localStorage.setItem("quizla-question-pop_culture", 0);
-  //     localStorage.setItem("quizla-question-history", 0);
-  //     localStorage.setItem("quizla-question-arts_and_lit", 0);
-  //     localStorage.setItem("quizla-question-science_and_nature", 0);
-  //     localStorage.setItem("quizla-question-sports_and_leisure", 0);
-  //     localStorage.setItem("quizla-answered-correctly", 0);
-
-  //   }
-  // }, [gameState])
 
   return (
     <div className="app">
