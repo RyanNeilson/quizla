@@ -25,7 +25,7 @@ export default function EndView(props) {
         {score === "6/6" ? "Perfect score! " : "Your score: "} {score}
       </h1>
       <div id="currentStats" style={{ display: "none" }}>
-        Quizla Score: {score}
+        Quizla! Score: {score}
         <br></br>
         Geography: {currentStats.geography === 1 ? "✅" : "❌"}
         <br></br>

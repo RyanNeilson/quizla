@@ -46,9 +46,9 @@ export default function StartView(props) {
       <h1 className="app-card__title welcome-title">Quizla!</h1>
       <span className="app-card__subtitle">A daily trivia game</span>
       <div id="aboutSection" className="app-card__about">
-        <h2>About Quizla</h2>
+        <h2>About Quizla!</h2>
         <p>
-          Quizla is a daily trivia game which asks you to match a statement to
+          Quizla! is a daily trivia game which asks you to match a statement to
           one of four options. You'll play six turns, each in a different
           category:&nbsp;<br></br>
           <span style={{ color: "#0e5ead" }}>Geography</span>,{" "}
@@ -62,9 +62,9 @@ export default function StartView(props) {
           For each category, you'll have fifteen seconds to make your choice and
           click the 'Submit' button.
         </p>
-        <p>Quizla questions update every day at midnight UTC.</p>
+        <p>Quizla! questions update every day at midnight UTC.</p>
         <p>
-          It's recommended to play Quizla in a modern browser. This app may not
+          It's recommended to play Quizla! in a modern browser. This app may not
           work correctly in older browsers like Internet Explorer.
         </p>
         <p>Comments? Suggestions? playquizla@gmail.com</p>
