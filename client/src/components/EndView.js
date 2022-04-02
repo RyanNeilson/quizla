@@ -39,6 +39,7 @@ export default function EndView(props) {
         <br></br>
         Sports & Leisure: {currentStats.sports_and_leisure === 1 ? "✅" : "❌"}
         <br></br>
+        https://quizla.herokuapp.com
       </div>
       <p>
         <button
