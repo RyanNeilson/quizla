@@ -1,5 +1,6 @@
 import React from "react";
 import UserStats from "./UserStats";
+import SocialLinks from "./SocialLinks";
 
 export default function StartView(props) {
   const historicalStats = localStorage.getItem("quizla-historical-stats");
@@ -45,6 +46,7 @@ export default function StartView(props) {
     <div className="app-card start-view">
       <h1 className="app-card__title welcome-title">Quizla!</h1>
       <span className="app-card__subtitle">A daily trivia game</span>
+      <SocialLinks />
       <div id="aboutSection" className="app-card__about">
         <h2>About Quizla!</h2>
         <p>
@@ -54,7 +56,7 @@ export default function StartView(props) {
           <span style={{ color: "#0e5ead" }}>Geography</span>,{" "}
           <span style={{ color: "#cf13a9" }}>Pop Culture</span>,{" "}
           <span style={{ color: "#9e7700" }}>History</span>,{" "}
-          <span style={{ color: "#4d08a6" }}>Arts &amp; Literature</span>,{" "}
+          <span style={{ color: "#4d08a6" }}>Kitchen Sink (Random)</span>,{" "}
           <span style={{ color: "#007524" }}>Science &amp; Nature</span>, or{" "}
           <span style={{ color: "#d15e00" }}>Sports &amp; Leisure</span>.
         </p>

@@ -11,8 +11,31 @@ export default function EndView(props) {
     let results = document.getElementById("currentStats").innerHTML;
     results = results.replace(/<br>/g, "\n");
     results = results.replace(/&amp;/g, "&");
-    navigator.clipboard.writeText(results);
-    window.alert("Results Copied!");
+    if (navigator.clipboard) {
+      navigator.clipboard
+        .writeText(results)
+        .then(() => alert("Results Copied"));
+    } else {
+      alert(
+        "Sorry, the results could not be copied. Maybe try again after refreshing the page"
+      );
+    }
+  }
+
+  function toggleResults() {
+    const stats = document.getElementById("currentStats");
+    const resultsToggle = document.getElementById("resultsToggle");
+    if (stats.classList.contains("show")) {
+      stats.classList.remove("show");
+    } else {
+      stats.classList.add("show");
+    }
+
+    if (resultsToggle.classList.contains("hide")) {
+      resultsToggle.classList.remove("hide");
+    } else {
+      resultsToggle.classList.add("hide");
+    }
   }
 
   function handleState(value) {
@@ -24,23 +47,6 @@ export default function EndView(props) {
       <h1 className="app-card__title">
         {score === "6/6" ? "Perfect score! " : "Your score: "} {score}
       </h1>
-      <div id="currentStats" style={{ display: "none" }}>
-        Quizla! Score: {score}
-        <br></br>
-        Geography: {currentStats.geography === 1 ? "✅" : "❌"}
-        <br></br>
-        Pop Culture: {currentStats.pop_culture === 1 ? "✅" : "❌"}
-        <br></br>
-        History: {currentStats.history === 1 ? "✅" : "❌"}
-        <br></br>
-        Arts & Lit: {currentStats.arts_and_lit === 1 ? "✅" : "❌"}
-        <br></br>
-        Science & Nature: {currentStats.science_and_nature === 1 ? "✅" : "❌"}
-        <br></br>
-        Sports & Leisure: {currentStats.sports_and_leisure === 1 ? "✅" : "❌"}
-        <br></br>
-        https://quizla.herokuapp.com
-      </div>
       <p>
         <button
           id="shareButton"
@@ -60,6 +66,41 @@ export default function EndView(props) {
             ></path>
           </svg>
         </button>
+      </p>
+      <div id="currentStats" className="app-card__current-stats">
+        Quizla! Score: {score}
+        <br></br>
+        Geography: {currentStats.geography === 1 ? "✅" : "❌"}
+        <br></br>
+        Pop Culture: {currentStats.pop_culture === 1 ? "✅" : "❌"}
+        <br></br>
+        History: {currentStats.history === 1 ? "✅" : "❌"}
+        <br></br>
+        Kitchen Sink: {currentStats.arts_and_lit === 1 ? "✅" : "❌"}
+        <br></br>
+        Science & Nature: {currentStats.science_and_nature === 1 ? "✅" : "❌"}
+        <br></br>
+        Sports & Leisure: {currentStats.sports_and_leisure === 1 ? "✅" : "❌"}
+        <br></br>
+        https://quizla.herokuapp.com
+        <br></br>
+        <br></br>
+        <button
+          className="app-card__show-results-toggle"
+          onClick={toggleResults}
+        >
+          Close Results
+        </button>
+      </div>
+      <p id="resultsToggle" className="app-card__show-results">
+        Share button not copying? To see your results and copy manually,{" "}
+        <button
+          className="app-card__show-results-toggle"
+          onClick={toggleResults}
+        >
+          click here
+        </button>
+        .
       </p>
       <p className="app-card__countdown">
         <Countdown handleState={handleState} />

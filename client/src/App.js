@@ -4,6 +4,7 @@ import StartView from "./components/StartView";
 import GameView from "./components/GameView";
 import EndView from "./components/EndView";
 import Confetti from "react-confetti";
+import CookieConsent from "react-cookie-consent";
 
 function App() {
   const [view, setView] = React.useState(null);
@@ -112,7 +113,7 @@ function App() {
           newData[2].category = "history";
           newData[2].category_nicename = "History";
           newData[3].category = "arts_and_lit";
-          newData[3].category_nicename = "Arts & Literature";
+          newData[3].category_nicename = "Kitchen Sink";
           newData[4].category = "science_and_nature";
           newData[4].category_nicename = "Science & Nature";
           newData[5].category = "sports_and_leisure";
@@ -227,6 +228,45 @@ function App() {
     <div className="app">
       {gameState === "complete" && currentScore === "6/6" ? <Confetti /> : ""}
       {view}
+      <CookieConsent
+        location="bottom"
+        buttonText="Accept"
+        buttonStyle={{
+          color: "#ffffff",
+          textTransform: "none",
+          background: "#000000",
+          borderRadius: "40px",
+          padding: "10px",
+        }}
+        style={{
+          alignItems: "center",
+          justifyContent: "center",
+          background: "#fcd026",
+          width: "100%",
+          position: "fixed",
+          bottom: "0",
+          left: "0",
+          display: "flex",
+          padding: "1rem 0",
+          flexWrap: "wrap",
+          zIndex: "99",
+        }}
+        disableStyles={true}
+      >
+        <span
+          style={{
+            width: "auto",
+            color: "#000000",
+            fontWeight: "bold",
+            fontSize: "0.875rem",
+            padding: "0.5rem 1rem",
+            display: "block",
+            textAlign: "center",
+          }}
+        >
+          This app uses cookies to enhance the user experience.
+        </span>
+      </CookieConsent>
     </div>
   );
 }

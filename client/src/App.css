@@ -69,7 +69,7 @@ body {
 }
 
 .app-card__subtitle {
-  margin: 0 auto 2rem;
+  margin: 0 auto;
   display: block;
   padding: 0.5rem;
   border: 3px solid black;
@@ -282,7 +282,7 @@ button {
 
 [category="arts_and_lit"] .app-card__category-title:after { 
   content: "";
-  background-image: url("./assets/palette.svg");
+  background-image: url("./assets/sink.svg");
   background-repeat: no-repeat;
   position: absolute;
   top:0;
@@ -436,6 +436,56 @@ button {
   padding: 0;
 }
 
+.app-card__show-results {
+  font-size: 0.875rem;
+}
+
+.app-card__show-results.hide {
+  display: none;
+}
+
+.app-card__show-results-toggle {
+  background: transparent;
+  font-size: 0.875rem;
+  padding: 0;
+  color:#190d54;
+  min-width: unset;
+  max-width: unset;
+  text-decoration: underline;
+  text-transform: none;
+}
+
+.app-card__show-results-toggle:hover {
+  color:#4d08a6;
+  cursor: pointer;
+}
+
+.app-card__current-stats {
+  display: none;
+}
+
+.app-card__current-stats.show {
+  display: block;
+}
+
+.app-card__social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.app-card__social-links svg {
+  margin: 0.5rem;
+  height: 36px;
+  transition: all 0.5s;
+  width: auto;
+}
+
+.app-card__social-links svg:hover {
+  transform: scale(1.25);
+}
+
 @media only screen and (min-width: 475px) {
   .app-card {
     padding: 4rem 2rem 2rem;
@@ -468,8 +518,7 @@ button {
     border-radius: 0.625rem;
     box-shadow: 0px 3px 10px 1px rgba(0,0,0,0.15);
     margin-top: 1rem;
-    min-height: unset;
-    height: 550px;
+    min-height: 550px;
     width: 700px;
   }
 
