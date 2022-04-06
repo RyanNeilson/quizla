@@ -25,6 +25,7 @@ export default function EndView(props) {
   function toggleResults() {
     const stats = document.getElementById("currentStats");
     const resultsToggle = document.getElementById("resultsToggle");
+    const resultsClose = document.getElementById("resultsClose");
     if (stats.classList.contains("show")) {
       stats.classList.remove("show");
     } else {
@@ -35,6 +36,12 @@ export default function EndView(props) {
       resultsToggle.classList.remove("hide");
     } else {
       resultsToggle.classList.add("hide");
+    }
+
+    if (resultsClose.classList.contains("show")) {
+      resultsClose.classList.remove("show");
+    } else {
+      resultsClose.classList.add("show");
     }
   }
 
@@ -85,13 +92,14 @@ export default function EndView(props) {
         https://quizla.herokuapp.com
         <br></br>
         <br></br>
-        <button
-          className="app-card__show-results-toggle"
-          onClick={toggleResults}
-        >
-          Close Results
-        </button>
       </div>
+      <button
+        id="resultsClose"
+        className="app-card__show-results-toggle close-results"
+        onClick={toggleResults}
+      >
+        Close Results
+      </button>
       <p id="resultsToggle" className="app-card__show-results">
         Share button not copying? To see your results and copy manually,{" "}
         <button

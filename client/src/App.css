@@ -444,6 +444,14 @@ button {
   display: none;
 }
 
+.close-results {
+  display: none;
+}
+
+.close-results.show {
+  display: block;
+}
+
 .app-card__show-results-toggle {
   background: transparent;
   font-size: 0.875rem;
