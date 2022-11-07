@@ -77,7 +77,7 @@ function App() {
         const todaysTimestamp = +new Date(currentDate);
         // Calculate the numerical data index to be fetched
         const timestampIndex =
-          (todaysTimestamp - originalTimestamp) / 86400000 + 1;
+          Math.floor((todaysTimestamp - originalTimestamp) / 86400000 + 1);
         // Convert data index to string for use in URL
         const id = timestampIndex.toString();
 
